@@ -43,6 +43,7 @@ button {
   font-weight: 500;
   color: white;
   cursor: pointer;
+  outline: none;
 }
 
 .number:active,

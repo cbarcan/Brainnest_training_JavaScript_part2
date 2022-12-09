@@ -55,12 +55,12 @@ const inputNumber = (event) => {
   if (displayValue == "0") {
     displayValue = event.target.textContent;
   } else {
-    if (displayValue.includes(".")) {
-      if (displayValue.length < 10) {
+    if (displayValue.toString().includes(".")) {
+      if (displayValue.toString().length < 10) {
         displayValue += event.target.textContent;
       }
     } else {
-      if (displayValue.length < 9) {
+      if (displayValue.toString().length < 9) {
         displayValue += event.target.textContent;
       }
     }
@@ -141,34 +141,45 @@ const clearDisplay = () => {
     firstValue = null;
     secondValue = null;
     currentOperator = "";
+    displayValue = 0;
   }
   updateDisplay();
 }
 
 // function that will change the sign of the number on the display
 const changeSign = () => {
+  clearButton.textContent = "C";
   if (firstValue) {
     if (displayValue === 0) {
       displayValue = firstValue;
     }
-    displayValue = -parseFloat(displayValue);
+    displayValue = displayValue * (-1);
     secondValue = displayValue;
   } else {
-    displayValue = -parseFloat(displayValue);
+    displayValue = displayValue * (-1);
   }
   updateDisplay();
 }
 
 // this function only divides by 100
 const operatePercentage = () => {
-  //this if is used so I can use percentage again on result
-  if (displayValue === 0) {
-    displayValue = firstValue;
+  if (currentOperator) {
+    if (displayValue === 0) {
+      displayValue = firstValue;
+    }
+    displayValue = displayNumber(displayValue / 100);
+    updateDisplay();
+    secondValue = parseFloat(displayValue);
+    displayValue = 0;
+  } else {
+    if (displayValue === 0) {
+      displayValue = firstValue;
+    }
+    displayValue = displayNumber(parseFloat(displayValue) / 100);
+    updateDisplay();
+    firstValue = parseFloat(displayValue);
+    displayValue = 0;
   }
-  displayValue = displayNumber(parseFloat(displayValue) / 100);
-  updateDisplay();
-  firstValue = parseFloat(displayValue);
-  displayValue = 0;
 }
 
 // this function inserts one dot and one dot only to the display
@@ -185,8 +196,8 @@ const inputDot = () => {
   updateDisplay();
 }
 
-//main function that adds event listeners to the buttons to call the functions above when pressed so that the calculator works
-const calculator = () => {
+// function that adds event listeners to the buttons to call the functions above when pressed so that the calculator works
+const clickButtons = () => {
   buttons.forEach(element => {
     switch (element.className) {
       case "number":
@@ -212,6 +223,108 @@ const calculator = () => {
         break;
     }
   });
+}
+
+// function that adds event listeners to the keys so you can use your keyboard to calculate
+const pushKeys = () => {
+  document.addEventListener("keydown", (event) => {
+    switch (event.key.toLowerCase()) {
+      case "c":
+        event.preventDefault();
+        buttons.item(0).click();
+        break;
+      case "s":
+        event.preventDefault();
+        buttons.item(1).click();
+        break;
+      case "%":
+        event.preventDefault();
+        buttons.item(2).click();
+        break;
+      case "/":
+        event.preventDefault();
+        buttons.item(3).click();
+        break;
+      case "7":
+        event.preventDefault();
+        buttons.item(4).click();
+        break;
+      case "8":
+        event.preventDefault();
+        buttons.item(5).click();
+        break;
+      case "9":
+        event.preventDefault();
+        buttons.item(6).click();
+        break;
+      case "*":
+        event.preventDefault();
+        buttons.item(7).click();
+        break;
+      case "4":
+        event.preventDefault();
+        buttons.item(8).click();
+        break;
+      case "5":
+        event.preventDefault();
+        buttons.item(9).click();
+        break;
+      case "6":
+        event.preventDefault();
+        buttons.item(10).click();
+        break;
+      case "-":
+        event.preventDefault();
+        buttons.item(11).click();
+        break;
+      case "1":
+        event.preventDefault();
+        buttons.item(12).click();
+        break;
+      case "2":
+        event.preventDefault();
+        buttons.item(13).click();
+        break;
+      case "3":
+        event.preventDefault();
+        buttons.item(14).click();
+        break;
+      case "+":
+        event.preventDefault();
+        buttons.item(15).click();
+        break;
+      case "0":
+        event.preventDefault();
+        buttons.item(16).click();
+        break;
+      case ".":
+        event.preventDefault();
+        buttons.item(17).click();
+        break;
+      case "enter":
+        event.preventDefault();
+        buttons.item(18).click();
+        break;
+      case "=":
+        event.preventDefault();
+        buttons.item(18).click();
+        break;
+      case "backspace":
+        event.preventDefault();
+        if (displayValue === 0) {
+          displayValue = firstValue;
+        }
+        displayValue = displayValue.toString().slice(0, -1) === "" ? 0 : displayValue.toString().slice(0, -1);
+        updateDisplay();
+        break;
+    }
+  });
+}
+
+//main function
+const calculator = () => {
+  clickButtons();
+  pushKeys();
 }
 
 calculator()
