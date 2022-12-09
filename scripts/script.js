@@ -166,6 +166,7 @@ const operatePercentage = () => {
   if (currentOperator) {
     if (displayValue === 0) {
       displayValue = firstValue;
+      currentOperator = "";
     }
     displayValue = displayNumber(displayValue / 100);
     updateDisplay();
@@ -173,7 +174,11 @@ const operatePercentage = () => {
     displayValue = 0;
   } else {
     if (displayValue === 0) {
-      displayValue = firstValue;
+      if (firstValue === null){
+        displayValue = 0;
+      } else {
+        displayValue = firstValue;
+      }
     }
     displayValue = displayNumber(parseFloat(displayValue) / 100);
     updateDisplay();
