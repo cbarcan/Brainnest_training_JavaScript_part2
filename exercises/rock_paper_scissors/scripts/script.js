@@ -56,6 +56,13 @@ const playRound = (playerSelection, computerSelection) => {
     main.removeChild(paperButton);
     main.removeChild(scissorsButton);
     playAgainButton.textContent = "Play again?";
+    playAgainButton.setAttribute("style",`
+    height: 30px;
+    width: 150px;
+    font-size: 18px;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+    `);
     main.appendChild(playAgainButton);
     playAgainButton.addEventListener("click", playAgain, { once: true });
   }
@@ -74,6 +81,31 @@ const game = () => {
   rockButton.textContent = "Rock";
   paperButton.textContent = "Paper";
   scissorsButton.textContent = "Scissors";
+  document.body.setAttribute("style", "background-color: whitesmoke;");
+  title.setAttribute("style", "margin: 50px 0 70px 10px");
+  result.setAttribute("style", "margin-left: 10px;");
+  score.setAttribute("style", "margin-left: 10px;");
+  rockButton.setAttribute("style",`
+  height: 30px;
+  width: 90px;
+  font-size: 18px;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+  `);
+  paperButton.setAttribute("style",`
+  height: 30px;
+  width: 90px;
+  font-size: 18px;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+  `);
+  scissorsButton.setAttribute("style",`
+  height: 30px;
+  width: 90px;
+  font-size: 18px;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+  `);
   document.body.appendChild(header);
   document.body.appendChild(main);
   header.appendChild(title);
