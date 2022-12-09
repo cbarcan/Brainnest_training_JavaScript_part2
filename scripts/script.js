@@ -153,10 +153,10 @@ const changeSign = () => {
     if (displayValue === 0) {
       displayValue = firstValue;
     }
-    displayValue = displayValue * (-1);
+    displayValue = -parseFloat(displayValue);
     secondValue = displayValue;
   } else {
-    displayValue = displayValue * (-1);
+    displayValue = -parseFloat(displayValue);
   }
   updateDisplay();
 }
