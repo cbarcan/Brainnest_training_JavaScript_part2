@@ -147,6 +147,7 @@ const clickButton = () => {
             firstValue = null;
             secondValue = null;
             currentOperator = "";
+            updateDisplay();
           }
         });
         break;
