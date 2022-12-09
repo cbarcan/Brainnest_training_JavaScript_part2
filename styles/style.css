@@ -26,23 +26,23 @@ header {
 }
 
 #calculator {
-  height: 550px;
-  width: 370px;
+  height: 600px;
+  width: 450px;
   display: grid;
   grid-template: repeat(6, 1fr) / repeat(4, 1fr);
   background-color: black;
   padding: 15px;
   border-radius: 40px;
+  gap: 10px;
 }
 
 button {
-  border-radius: 80%;
-  font-size: 35px;
-  font-weight: 5S00;
-  background-color: white;
+  border: none;
+  border-radius: 40%;
+  font-size: 40px;
+  font-weight: 500;
   color: white;
   cursor: pointer;
-
 }
 
 .number:active,
@@ -56,7 +56,7 @@ button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-size: 70px;
+  font-size: 62px;
   font-weight: 700;
   color: white;
 }
@@ -73,22 +73,22 @@ button {
   transition: background-color 0s;
 }
 
-.operator{
-  background-color:darkorange;
+.operator {
+  background-color: darkorange;
 }
 
-.operator:focus{
+.operator:focus {
   background-color: white;
   color: darkorange;
 }
 
 .equal {
-  background-color:darkorange;
+  background-color: darkorange;
   transition: background-color 2.5s;
 }
 
 .equal:active {
-  background-color:rgb(250, 188, 112);
+  background-color: rgb(250, 188, 112);
   transition: background-color 0s;
 }
 
@@ -107,11 +107,11 @@ button {
 }
 
 #zero {
-  grid-area: 6 / 1 / span 2 / span 2;
-  border-radius: 50px;
+  grid-area: 6 / 1 / span 1 / span 2;
+  border-radius: 34px;
   display: flex;
   align-items: center;
-  padding-left: 32px;
+  padding-left: 37px;
 }
 
 footer {
